@@ -523,3 +523,116 @@
                 gap: 1.5rem;
             }
         }
+
+
+/* Work Experience Section */
+#experience {
+    padding: 5rem 2rem;
+    background-color: var(--gray);
+}
+
+.experience-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.experience-card {
+    background-color: var(--light);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeIn 0.6s forwards;
+    animation-delay: calc(var(--i, 0) * 0.1s);
+}
+
+.experience-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.experience-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+
+.experience-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+}
+
+.experience-company {
+    font-weight: 500;
+    color: var(--primary);
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.experience-duration {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.experience-content {
+    padding: 1.5rem;
+}
+
+.experience-list {
+    padding-left: 1.2rem;
+}
+
+.experience-list li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+}
+
+.experience-list li:last-child {
+    margin-bottom: 0;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Add animation delay for cards */
+.experience-card:nth-child(1) {
+    --i: 1;
+}
+
+.experience-card:nth-child(2) {
+    --i: 2;
+}
+
+.experience-card:nth-child(3) {
+    --i: 3;
+}
+
+.experience-card:nth-child(4) {
+    --i: 4;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .experience-header {
+        padding: 1.2rem;
+    }
+    
+    .experience-content {
+        padding: 1.2rem;
+    }
+    
+    .experience-title {
+        font-size: 1.2rem;
+    }
+}

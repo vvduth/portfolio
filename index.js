@@ -147,3 +147,36 @@
          }
      });
  });
+
+// Animation for Experience Cards
+document.addEventListener('DOMContentLoaded', function() {
+    const experienceCards = document.querySelectorAll('.experience-card');
+    
+    const experienceObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        },
+        { threshold: 0.1 }
+    );
+    
+    experienceCards.forEach((card) => {
+        experienceObserver.observe(card);
+    });
+    
+    // Add experience link to navigation
+    const navLinks = document.getElementById('navLinks');
+    if (navLinks) {
+        const projectsLink = document.querySelector('a[href="#projects"]');
+        if (projectsLink) {
+            const experienceLink = document.createElement('a');
+            experienceLink.href = '#experience';
+            experienceLink.textContent = 'Experience';
+            navLinks.insertBefore(experienceLink, projectsLink.nextSibling);
+        }
+    }
+});
