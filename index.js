@@ -156,8 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
         (entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.style.animation = 'fadeIn 0.8s forwards';
                 }
             });
         },
@@ -168,15 +167,18 @@ document.addEventListener('DOMContentLoaded', function() {
         experienceObserver.observe(card);
     });
     
-    // Add experience link to navigation
+    // Make sure Experience link is in navigation
     const navLinks = document.getElementById('navLinks');
     if (navLinks) {
-        const projectsLink = document.querySelector('a[href="#projects"]');
-        if (projectsLink) {
-            const experienceLink = document.createElement('a');
-            experienceLink.href = '#experience';
-            experienceLink.textContent = 'Experience';
-            navLinks.insertBefore(experienceLink, projectsLink.nextSibling);
+        const experienceLink = document.querySelector('a[href="#experience"]');
+        if (!experienceLink) {
+            const aboutLink = document.querySelector('a[href="#about"]');
+            if (aboutLink) {
+                const newExperienceLink = document.createElement('a');
+                newExperienceLink.href = '#experience';
+                newExperienceLink.textContent = 'Experience';
+                navLinks.insertBefore(newExperienceLink, aboutLink);
+            }
         }
     }
 });
