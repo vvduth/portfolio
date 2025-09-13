@@ -1,0 +1,40 @@
+/* Work Experience Section */
+#experience { padding: 5rem 2rem; background-color: var(--gray); position: relative; }
+#experience::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(rgba(248,249,250,0.9), rgba(248,249,250,0.9)), url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233a86ff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); z-index: 0; }
+.experience-container { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+.experience-timeline { position: relative; padding-left: 50px; }
+.experience-timeline::before { content: ''; position: absolute; left: 15px; top: 0; height: 100%; width: 4px; background: var(--primary); border-radius: 2px; opacity: 0.7; }
+.experience-card { background-color: var(--light); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: var(--transition); opacity: 0; transform: translateY(30px); margin-bottom: 2.5rem; border-left: 4px solid var(--primary); position: relative; }
+.experience-card::before { content: ''; position: absolute; left: -54px; top: 30px; width: 20px; height: 20px; border-radius: 50%; background: var(--primary); border: 5px solid var(--light); box-shadow: 0 0 0 5px rgba(58,134,255,0.2); z-index: 1; }
+.experience-card:hover { transform: translateY(-5px) translateX(5px); box-shadow: 0 15px 40px rgba(58,134,255,0.2); }
+.experience-header { padding: 1.8rem 2rem 1rem; border-bottom: 1px solid #eee; position: relative; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; }
+.experience-header-left { flex: 1; min-width: 200px; }
+.experience-title { font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--dark); font-weight: 600; }
+.experience-company { font-weight: 500; color: var(--primary); display: flex; align-items: center; margin-bottom: 0.5rem; }
+.experience-company i { margin-right: 8px; font-size: 1.1rem; }
+.experience-duration { display: inline-block; font-size: 0.9rem; color: #666; background-color: rgba(58,134,255,0.1); padding: 0.3rem 0.8rem; border-radius: 50px; margin-top: 0.5rem; }
+.experience-duration i { margin-right: 5px; }
+.experience-logo { width: 60px; height: 60px; border-radius: 8px; display: flex; align-items: center; justify-content: center; background-color: rgba(58,134,255,0.1); color: var(--primary); font-size: 1.5rem; }
+.experience-content { padding: 1.8rem 2rem; }
+.experience-list { padding-left: 1.5rem; list-style-type: none; }
+.experience-list li { margin-bottom: 1rem; line-height: 1.7; position: relative; }
+.experience-list li::before { content: ""; position: absolute; width: 8px; height: 8px; border-radius: 50%; background: var(--primary); left: -1.5rem; top: 0.7rem; }
+.experience-list li:last-child { margin-bottom: 0; }
+.experience-skills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px dashed #eee; }
+.experience-skill { padding: 0.3rem 0.8rem; background-color: rgba(58,134,255,0.1); border-radius: 50px; font-size: 0.8rem; font-weight: 500; color: var(--primary); }
+
+/* Animation for Experience Cards */
+.experience-card:nth-child(1) { animation-delay: 0.1s; }
+.experience-card:nth-child(2) { animation-delay: 0.3s; }
+.experience-card:nth-child(3) { animation-delay: 0.5s; }
+.experience-card:nth-child(4) { animation-delay: 0.7s; }
+
+@media (max-width: 768px) {
+  .experience-timeline { padding-left: 30px; }
+  .experience-timeline::before { left: 10px; }
+  .experience-card::before { left: -34px; width: 16px; height: 16px; }
+  .experience-header { padding: 1.2rem 1.5rem 1rem; flex-direction: column; align-items: flex-start; }
+  .experience-logo { margin-bottom: 1rem; }
+  .experience-content { padding: 1.2rem 1.5rem; }
+  .experience-title { font-size: 1.2rem; }
+}
