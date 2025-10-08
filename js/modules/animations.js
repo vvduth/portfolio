@@ -16,7 +16,10 @@ export function initExperienceAnimations() {
   if (!cards.length) return;
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) entry.target.style.animation = 'fadeIn 0.8s forwards';
+      if (entry.isIntersecting) {
+        entry.target.style.animation = 'fadeIn 0.8s forwards';
+        entry.target.classList.add('visible');
+      }
     });
   }, { threshold: 0.1 });
   cards.forEach((c) => observer.observe(c));
