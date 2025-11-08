@@ -10,6 +10,21 @@
   margin-bottom: 3rem;
 }
 
+/* Desktop filters - button layout */
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+/* Mobile filters - dropdown layout */
+.filter-mobile {
+  display: none;
+  width: 100%;
+  max-width: 400px;
+}
+
 .filter-btn {
   padding: 0.6rem 1.2rem;
   background: var(--light);
@@ -41,6 +56,52 @@
   font-size: 0.85rem;
 }
 
+/* Filter dropdown for mobile */
+.filter-select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.filter-select-wrapper > i:first-child {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--primary);
+  pointer-events: none;
+  font-size: 0.9rem;
+}
+
+.filter-select {
+  width: 100%;
+  height: 48px;
+  padding: 0.75rem 2.5rem 0.75rem 2.75rem;
+  background: var(--light);
+  border: 2px solid #e0e0e0;
+  border-radius: 25px;
+  color: var(--dark);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  appearance: none;
+  transition: var(--transition);
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.filter-select-wrapper > i:last-child {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--dark);
+  pointer-events: none;
+  font-size: 0.85rem;
+}
+
 /* Pagination */
 .project-pagination {
   display: flex;
@@ -48,6 +109,22 @@
   align-items: center;
   gap: 0.5rem;
   margin-top: 3rem;
+}
+
+/* Desktop pagination - button layout */
+.pagination-buttons {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Mobile pagination - dropdown layout */
+.pagination-mobile {
+  display: none;
+  gap: 0.75rem;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
 }
 
 .pagination-btn {
@@ -84,20 +161,65 @@
   cursor: not-allowed;
 }
 
+/* Dropdown select for mobile */
+.pagination-select-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.pagination-select {
+  width: 100%;
+  height: 40px;
+  padding: 0.5rem 2.5rem 0.5rem 1rem;
+  background: var(--light);
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  color: var(--dark);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  appearance: none;
+  transition: var(--transition);
+}
+
+.pagination-select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.pagination-select-wrapper i {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--dark);
+  pointer-events: none;
+  font-size: 0.85rem;
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
-  .project-filters {
-    gap: 0.5rem;
+  /* Hide desktop filter buttons, show mobile dropdown */
+  .filter-buttons {
+    display: none;
   }
 
-  .filter-btn {
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
+  .filter-mobile {
+    display: block;
+  }
+
+  /* Hide desktop pagination buttons, show mobile dropdown */
+  .pagination-buttons {
+    display: none;
+  }
+
+  .pagination-mobile {
+    display: flex;
   }
 
   .pagination-btn {
-    min-width: 36px;
-    height: 36px;
+    min-width: 40px;
+    height: 40px;
     font-size: 0.85rem;
   }
 }

@@ -66,14 +66,15 @@ function renderFilters() {
 
   const tags = getAllTags();
   
-  // All button
   let filtersHTML = `
-    <button class="filter-btn active" data-filter="all">
-      <i class="fas fa-th"></i> All
-    </button>
+    <!-- Desktop Filters (Buttons) -->
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">
+        <i class="fas fa-th"></i> All
+      </button>
   `;
 
-  // Tag buttons
+  // Tag buttons for desktop
   tags.forEach(tag => {
     filtersHTML += `
       <button class="filter-btn" data-filter="${tag}">
@@ -82,13 +83,60 @@ function renderFilters() {
     `;
   });
 
+  filtersHTML += `
+    </div>
+
+    <!-- Mobile Filters (Dropdown) -->
+    <div class="filter-mobile">
+      <div class="filter-select-wrapper">
+        <i class="fas fa-filter"></i>
+        <select class="filter-select" id="filterSelect">
+          <option value="all">All Projects</option>
+  `;
+
+  // Tag options for mobile
+  tags.forEach(tag => {
+    filtersHTML += `
+          <option value="${tag}">${tag}</option>
+    `;
+  });
+
+  filtersHTML += `
+        </select>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
+  `;
+
   filterContainer.innerHTML = filtersHTML;
 
-  // Attach event listeners
+  // Attach event listeners to desktop buttons
   const buttons = filterContainer.querySelectorAll('.filter-btn');
   buttons.forEach(btn => {
     btn.addEventListener('click', () => handleFilterClick(btn));
   });
+
+  // Attach event listener to mobile dropdown
+  const selectElement = document.getElementById('filterSelect');
+  if (selectElement) {
+    selectElement.addEventListener('change', (e) => {
+      const filter = e.target.value;
+      currentFilter = filter;
+      currentPage = 1;
+
+      // Filter projects
+      if (filter === 'all') {
+        filteredProjects = [...projects];
+      } else {
+        filteredProjects = projects.filter(project => 
+          project.tags.includes(filter)
+        );
+      }
+
+      // Re-render
+      renderProjects();
+    });
+  }
 }
 
 // Handle filter button click
@@ -128,16 +176,15 @@ function updatePagination() {
     return;
   }
 
-  let paginationHTML = '';
-
-  // Previous button
-  paginationHTML += `
-    <button class="pagination-btn" ${currentPage === 1 ? 'disabled' : ''} data-page="${currentPage - 1}">
-      <i class="fas fa-chevron-left"></i>
-    </button>
+  let paginationHTML = `
+    <!-- Desktop Pagination (Buttons) -->
+    <div class="pagination-buttons">
+      <button class="pagination-btn" ${currentPage === 1 ? 'disabled' : ''} data-page="${currentPage - 1}">
+        <i class="fas fa-chevron-left"></i>
+      </button>
   `;
 
-  // Page numbers
+  // Page number buttons
   for (let i = 1; i <= totalPages; i++) {
     paginationHTML += `
       <button class="pagination-btn ${i === currentPage ? 'active' : ''}" data-page="${i}">
@@ -146,26 +193,61 @@ function updatePagination() {
     `;
   }
 
-  // Next button
   paginationHTML += `
-    <button class="pagination-btn" ${currentPage === totalPages ? 'disabled' : ''} data-page="${currentPage + 1}">
-      <i class="fas fa-chevron-right"></i>
-    </button>
+      <button class="pagination-btn" ${currentPage === totalPages ? 'disabled' : ''} data-page="${currentPage + 1}">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Pagination (Dropdown) -->
+    <div class="pagination-mobile">
+      <button class="pagination-btn" ${currentPage === 1 ? 'disabled' : ''} data-page="${currentPage - 1}">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      
+      <div class="pagination-select-wrapper">
+        <select class="pagination-select" id="pageSelect">
+  `;
+
+  // Dropdown options
+  for (let i = 1; i <= totalPages; i++) {
+    paginationHTML += `
+          <option value="${i}" ${i === currentPage ? 'selected' : ''}>Page ${i} of ${totalPages}</option>
+    `;
+  }
+
+  paginationHTML += `
+        </select>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      
+      <button class="pagination-btn" ${currentPage === totalPages ? 'disabled' : ''} data-page="${currentPage + 1}">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
   `;
 
   paginationContainer.innerHTML = paginationHTML;
 
-  // Attach event listeners
+  // Attach event listeners to buttons
   const buttons = paginationContainer.querySelectorAll('.pagination-btn:not([disabled])');
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
       currentPage = parseInt(btn.dataset.page);
       renderProjects();
-      
-      // Scroll to projects section
       document.getElementById('projects').scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+
+  // Attach event listener to dropdown
+  const selectElement = document.getElementById('pageSelect');
+  if (selectElement) {
+    selectElement.addEventListener('change', (e) => {
+      currentPage = parseInt(e.target.value);
+      renderProjects();
+      document.getElementById('projects').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
 }
 
 // Initialize projects section

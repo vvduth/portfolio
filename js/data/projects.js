@@ -93,7 +93,7 @@ export const projects = [
     title: 'Foodboot',
     description: 'A comprehensive food delivery application. Closed because of AWS cost too much.',
     image: './foodboot.png',
-    tags: ['React', 'TypeScript', 'AWS S3', 'RDS', 'Stripe', 'Java', 'SpringBoot'],
+    tags: ['React', 'TypeScript', 'AWS S3', 'AWS RDS', 'Stripe', 'Java', 'SpringBoot'],
     links: {
       demo: 'http://foodboot-client-react.s3-website-us-east-1.amazonaws.com',
       code: 'https://github.com/vvduth/food-boot-client'
