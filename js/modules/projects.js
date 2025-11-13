@@ -47,6 +47,13 @@ function renderProjects() {
   // Render cards
   grid.innerHTML = projectsToShow.map(renderProjectCard).join('');
 
+  // Ensure all links open in new tab
+  const projectLinks = grid.querySelectorAll('.project-link');
+  projectLinks.forEach(link => {
+    link.setAttribute('target', '_blank');
+    link.setAttribute('rel', 'noopener noreferrer');
+  });
+
   // Trigger animations after render
   setTimeout(() => {
     const cards = grid.querySelectorAll('.project-card');

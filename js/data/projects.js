@@ -34,13 +34,13 @@ export const projects = [
   },
   {
     id: 3,
-    title: "Clean blog",
+    title: "Cyber blog",
     description:
       "My personal blog website, where I share my document on hand-on projects that related to Cloud, DevOps, Web development.",
-    image: "./blog-project.png",
+    image: "./new_blog.png",
     tags: ["JavaScript", "Python", "Flask", "PostgreSQL", "AWS"],
     links: {
-      demo: "http://13.60.94.174",
+      demo: "https://www.dukemblog.xyz/",
       code: "https://github.com/vvduth/my-blog",
     },
   },
