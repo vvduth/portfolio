@@ -1,24 +1,80 @@
-/* Variables and base resets */
+/* Variables and base resets - Cyberpunk/Neon Theme */
 :root {
-  --primary: #3a86ff;
-  --dark: #1a1a2e;
-  --light: #ffffff;
-  --gray: #f8f9fa;
-  --transition: all 0.3s ease;
+  /* Neon Color Palette */
+  --neon-cyan: #00f0ff;
+  --neon-pink: #ff006e;
+  --neon-purple: #b300ff;
+  --neon-yellow: #ffea00;
+  --neon-green: #39ff14;
+  
+  /* Dark Background Palette */
+  --bg-primary: #0a0e27;
+  --bg-secondary: #151a35;
+  --bg-tertiary: #1f2544;
+  --bg-card: #0d1230;
+  
+  /* Text Colors */
+  --text-primary: #e8eaed;
+  --text-secondary: #a0a8b8;
+  --text-muted: #6b7589;
+  
+  /* Gradients */
+  --gradient-neon: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-purple) 100%);
+  --gradient-pink: linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-purple) 100%);
+  --gradient-yellow: linear-gradient(135deg, var(--neon-yellow) 0%, var(--neon-pink) 100%);
+  --gradient-cyber: linear-gradient(135deg, #00f0ff 0%, #b300ff 50%, #ff006e 100%);
+  
+  /* Neon Shadows */
+  --glow-cyan: 0 0 20px rgba(0, 240, 255, 0.5), 0 0 40px rgba(0, 240, 255, 0.3);
+  --glow-pink: 0 0 20px rgba(255, 0, 110, 0.5), 0 0 40px rgba(255, 0, 110, 0.3);
+  --glow-purple: 0 0 20px rgba(179, 0, 255, 0.5), 0 0 40px rgba(179, 0, 255, 0.3);
+  --glow-yellow: 0 0 20px rgba(255, 234, 0, 0.5), 0 0 40px rgba(255, 234, 0, 0.3);
+  
+  /* Transitions */
+  --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Border & Radius */
+  --border-thin: 1px;
+  --border-medium: 2px;
+  --border-thick: 3px;
+  --radius-sm: 0;
+  --radius-md: 2px;
+  --radius-lg: 4px;
+  --radius-xl: 0;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-  background-color: var(--gray);
-  color: var(--dark);
+  font-family: 'Rajdhani', 'Orbitron', 'Roboto Mono', monospace;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+/* Cyberpunk Grid Background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 0;
 }
 
 a {
@@ -26,6 +82,175 @@ a {
   color: inherit;
 }
 
-/* Animations */
-@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-@keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar - Neon Style */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-left: var(--border-thin) solid var(--neon-cyan);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-neon);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  box-shadow: var(--glow-cyan);
+}
+
+/* Animations - Cyberpunk Style */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px) skewX(-5deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) skewX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px) skewX(5deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) skewX(0);
+  }
+}
+
+@keyframes glitch {
+  0%, 100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+}
+
+@keyframes neonPulse {
+  0%, 100% {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+  50% {
+    text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
+  }
+}
+
+@keyframes borderGlow {
+  0%, 100% {
+    box-shadow: 
+      0 0 5px var(--neon-cyan),
+      inset 0 0 5px var(--neon-cyan);
+  }
+  50% {
+    box-shadow: 
+      0 0 20px var(--neon-cyan),
+      inset 0 0 10px var(--neon-cyan);
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+}
+
+@keyframes rotateGradient {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes dataStream {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* Glitch Text Effect */
+.glitch {
+  position: relative;
+  animation: glitch 1s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--neon-pink);
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch 5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 var(--neon-cyan);
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch 5s infinite linear alternate-reverse;
+}
+
+

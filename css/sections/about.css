@@ -1,2 +1,10 @@
-/* About Section overrides (optional) */
+/* About Section - Modern Dark Theme */
+#about .section-title {
+  color: var(--white);
+}
+
+#about .section-title::before,
+#about .section-title::after {
+  background: var(--gradient-accent);
+}
 /* Add section-specific overrides here if needed */

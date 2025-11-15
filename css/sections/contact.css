@@ -1,2 +1,16 @@
-/* Contact Section overrides (optional) */
+/* Contact Section - Modern Light Theme */
+#contact {
+  position: relative;
+}
+
+#contact::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(to top, var(--light), transparent);
+  pointer-events: none;
+}
 /* Add section-specific overrides here if needed */

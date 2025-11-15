@@ -1,5 +1,8 @@
-/* Projects Section */
-#projects { padding: 5rem 2rem; }
+/* Projects Section - Cyberpunk Design */
+#projects {
+  padding: 6rem 5%;
+  background: var(--bg-secondary);
+}
 
 /* Filter Buttons */
 .project-filters {
@@ -27,29 +30,48 @@
 
 .filter-btn {
   padding: 0.6rem 1.2rem;
-  background: var(--light);
-  border: 2px solid #e0e0e0;
-  border-radius: 25px;
-  color: var(--dark);
+  background: transparent;
+  border: 2px solid var(--neon-cyan);
+  color: var(--neon-cyan);
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 700;
   cursor: pointer;
   transition: var(--transition);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-neon);
+  transform: translateX(-100%);
+  transition: var(--transition);
+  z-index: -1;
 }
 
 .filter-btn:hover {
-  border-color: var(--primary);
-  color: var(--primary);
+  color: var(--bg-primary);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
   transform: translateY(-2px);
 }
 
+.filter-btn:hover::before {
+  transform: translateX(0);
+}
+
 .filter-btn.active {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: var(--light);
+  background: var(--gradient-neon);
+  color: var(--bg-primary);
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
 }
 
 .filter-btn i {
@@ -67,7 +89,7 @@
   left: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--primary);
+  color: var(--neon-cyan);
   pointer-events: none;
   font-size: 0.9rem;
 }
@@ -76,20 +98,24 @@
   width: 100%;
   height: 48px;
   padding: 0.75rem 2.5rem 0.75rem 2.75rem;
-  background: var(--light);
-  border: 2px solid #e0e0e0;
-  border-radius: 25px;
-  color: var(--dark);
+  background: var(--bg-card);
+  border: 2px solid var(--neon-cyan);
+  color: var(--text-primary);
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   appearance: none;
   transition: var(--transition);
+  clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
+  font-family: 'Roboto Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .filter-select:focus {
   outline: none;
-  border-color: var(--primary);
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
 }
 
 .filter-select-wrapper > i:last-child {
@@ -97,7 +123,7 @@
   right: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--dark);
+  color: var(--neon-cyan);
   pointer-events: none;
   font-size: 0.85rem;
 }
@@ -131,33 +157,51 @@
   min-width: 40px;
   height: 40px;
   padding: 0.5rem;
-  background: var(--light);
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  color: var(--dark);
+  background: transparent;
+  border: 2px solid var(--neon-purple);
+  color: var(--neon-purple);
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 700;
   cursor: pointer;
   transition: var(--transition);
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  position: relative;
+  overflow: hidden;
+}
+
+.pagination-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-pink);
+  opacity: 0;
+  transition: var(--transition);
+  z-index: -1;
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
 }
 
 .pagination-btn:hover:not([disabled]) {
-  border-color: var(--primary);
-  color: var(--primary);
+  color: var(--bg-primary);
+  box-shadow: 0 0 20px rgba(179, 0, 255, 0.5);
   transform: translateY(-2px);
 }
 
+.pagination-btn:hover:not([disabled])::before {
+  opacity: 1;
+}
+
 .pagination-btn.active {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: var(--light);
+  background: var(--gradient-pink);
+  color: var(--bg-primary);
+  border-color: var(--neon-purple);
+  box-shadow: 0 0 20px rgba(179, 0, 255, 0.5);
 }
 
 .pagination-btn:disabled {
-  opacity: 0.4;
+  opacity: 0.3;
   cursor: not-allowed;
 }
 
@@ -171,20 +215,22 @@
   width: 100%;
   height: 40px;
   padding: 0.5rem 2.5rem 0.5rem 1rem;
-  background: var(--light);
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  color: var(--dark);
+  background: var(--bg-card);
+  border: 2px solid var(--neon-purple);
+  color: var(--text-primary);
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   appearance: none;
   transition: var(--transition);
+  clip-path: polygon(3px 0, 100% 0, calc(100% - 3px) 100%, 0 100%);
+  font-family: 'Roboto Mono', monospace;
 }
 
 .pagination-select:focus {
   outline: none;
-  border-color: var(--primary);
+  border-color: var(--neon-purple);
+  box-shadow: 0 0 15px rgba(179, 0, 255, 0.3);
 }
 
 .pagination-select-wrapper i {
@@ -192,7 +238,7 @@
   right: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--dark);
+  color: var(--neon-purple);
   pointer-events: none;
   font-size: 0.85rem;
 }

@@ -1,15 +1,48 @@
-/* Header */
+/* Layout - Cyberpunk/Neon Theme */
+
+/* Header - Futuristic Dark Hero */
 header {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
+  min-height: 100vh;
+  background: var(--bg-primary);
   position: relative;
-  background-color: var(--dark);
-  color: var(--light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   overflow: hidden;
+}
+
+/* Animated Scanlines */
+header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 240, 255, 0.03) 0px,
+    transparent 2px,
+    transparent 4px,
+    rgba(0, 240, 255, 0.03) 4px
+  );
+  pointer-events: none;
+  animation: scanline 10s linear infinite;
+}
+
+/* Neon Corner Accents */
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  border-top: 3px solid var(--neon-cyan);
+  border-left: 3px solid var(--neon-cyan);
+  box-shadow: var(--glow-cyan);
+  z-index: 1;
 }
 
 .particles {
@@ -19,32 +52,274 @@ header {
   width: 100%;
   height: 100%;
   z-index: 1;
+  opacity: 0.6;
 }
 
 .header-content {
   position: relative;
   z-index: 2;
+  padding: 2rem;
+  max-width: 900px;
+}
+
+.header-title {
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-weight: 900;
+  margin-bottom: 1rem;
+  background: var(--gradient-cyber);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  animation: fadeUp 1s ease-out, rotateGradient 5s linear infinite;
+  position: relative;
+}
+
+.header-subtitle {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  color: var(--neon-cyan);
+  text-shadow: var(--glow-cyan);
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  animation: fadeUp 1s ease-out 0.2s backwards;
+}
+
+.header-cta {
+  display: inline-block;
+  padding: 1rem 3rem;
+  background: transparent;
+  border: 2px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  animation: fadeUp 1s ease-out 0.6s backwards;
+}
+
+.header-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-neon);
+  transition: var(--transition);
+  z-index: -1;
+}
+
+.header-cta:hover {
+  color: var(--bg-primary);
+  box-shadow: var(--glow-cyan);
+  transform: translateY(-2px);
+}
+
+.header-cta:hover::before {
+  left: 0;
+}
+
+/* Sections - Asymmetric Layout */
+.section {
+  padding: 6rem 5%;
+  position: relative;
+  overflow: hidden;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 300px;
+  border-top: 2px solid var(--neon-purple);
+  border-right: 2px solid var(--neon-purple);
+  opacity: 0.3;
+  clip-path: polygon(100% 0, 100% 100%, 0 0);
+}
+
+.section:nth-child(even) {
+  background: var(--bg-secondary);
+}
+
+.section:nth-child(even)::before {
+  right: auto;
+  left: 0;
+  border: none;
+  border-bottom: 2px solid var(--neon-pink);
+  border-left: 2px solid var(--neon-pink);
+  clip-path: polygon(0 100%, 100% 100%, 0 0);
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  margin-bottom: 3rem;
   text-align: center;
-  max-width: 800px;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  position: relative;
+  display: inline-block;
+  width: 100%;
 }
 
-.header-title { font-size: 4rem; margin-bottom: 1rem; opacity: 0; transform: translateY(30px); animation: fadeUp 1s forwards 0.5s; }
-.header-subtitle { font-size: 1.5rem; margin-bottom: 2rem; opacity: 0; transform: translateY(30px); animation: fadeUp 1s forwards 0.7s; }
-.header-cta { display: inline-block; padding: 0.8rem 1.8rem; background-color: var(--primary); color: white; border-radius: 50px; font-weight: 600; transition: var(--transition); opacity: 0; transform: translateY(30px); animation: fadeUp 1s forwards 0.9s; }
-.header-cta:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(58, 134, 255, 0.3); }
+.section-title::before {
+  content: '// ';
+  color: var(--neon-cyan);
+  font-weight: 400;
+}
 
-/* Sections */
-.section-title { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; position: relative; }
-.section-title::after { content: ''; display: block; width: 80px; height: 4px; background-color: var(--primary); margin: 0.5rem auto; }
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: var(--gradient-neon);
+  box-shadow: var(--glow-cyan);
+}
 
-/* Footer */
-footer { background-color: var(--dark); color: var(--light); padding: 2rem; text-align: center; }
-.footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; }
-.footer-link { font-size: 1.5rem; transition: var(--transition); }
-.footer-link:hover { color: var(--primary); }
-.copyright { opacity: 0.7; }
+/* Footer - Minimalist Cyberpunk */
+footer {
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  padding: 3rem 5%;
+  text-align: center;
+  border-top: 2px solid var(--neon-cyan);
+  position: relative;
+}
 
-/* Responsive */
+footer::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--gradient-neon);
+  box-shadow: var(--glow-cyan);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.social-links,
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.social-links a,
+.footer-link {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 2px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+  font-size: 1.3rem;
+  transition: var(--transition);
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  position: relative;
+}
+
+.social-links a::before,
+.footer-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-neon);
+  opacity: 0;
+  transition: var(--transition);
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+}
+
+.social-links a:hover,
+.footer-link:hover {
+  box-shadow: var(--glow-cyan);
+  transform: translateY(-5px) rotate(45deg);
+}
+
+.social-links a:hover::before,
+.footer-link:hover::before {
+  opacity: 1;
+}
+
+.social-links a i,
+.footer-link i {
+  position: relative;
+  z-index: 1;
+}
+
+.social-links a:hover i,
+.footer-link:hover i {
+  color: var(--bg-primary);
+}
+
+footer p,
+.copyright {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-family: 'Roboto Mono', monospace;
+  letter-spacing: 0.05em;
+}
+
+footer p::before {
+  content: '< ';
+  color: var(--neon-cyan);
+}
+
+footer p::after {
+  content: ' />';
+  color: var(--neon-cyan);
+}
+
 @media (max-width: 768px) {
-  .header-title { font-size: 3rem; }
+  header::before {
+    width: 100px;
+    height: 100px;
+  }
+
+  .section {
+    padding: 4rem 5%;
+  }
+
+  .section-title {
+    margin-bottom: 2rem;
+  }
+
+  .header-cta {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+  }
+
+  .social-links,
+  .footer-links {
+    gap: 1.5rem;
+  }
+
+  .social-links a,
+  .footer-link {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+  }
 }
+

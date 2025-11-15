@@ -1,68 +1,706 @@
-/* Navbar */
-nav { position: fixed; top: 0; left: 0; width: 100%; padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: var(--transition); }
-nav.scrolled { background-color: var(--light); box-shadow: 0 5px 20px rgba(0,0,0,0.1); padding: 1rem 2rem; }
-nav.scrolled .logo { color: var(--dark); }
-nav.scrolled .nav-links a { color: var(--dark); }
-.logo { font-size: 1.8rem; font-weight: 700; color: var(--light); transition: var(--transition); }
-.nav-links { display: flex; gap: 2rem; }
-.nav-links a { color: var(--light); font-weight: 500; transition: var(--transition); position: relative; }
-.nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: var(--primary); transition: var(--transition); }
-.nav-links a:hover::after { width: 100%; }
-.menu-btn { display: none; font-size: 1.5rem; cursor: pointer; z-index: 1001; }
-
-/* Project cards */
-.projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
-.project-card { background-color: var(--light); border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: var(--transition); opacity: 0; transform: translateY(30px); }
-.project-card.visible { opacity: 1; transform: translateY(0); }
-.project-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
-.project-img { width: 100%; height: 200px; object-fit: cover; border-top-left-radius: 10px; border-top-right-radius: 10px; }
-.project-content { padding: 1.5rem; }
-.project-title { font-size: 1.3rem; margin-bottom: 0.5rem; }
-.project-desc { color: #555; margin-bottom: 1rem; }
-.project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
-.project-tag { padding: 0.3rem 0.8rem; background-color: var(--gray); border-radius: 50px; font-size: 0.8rem; font-weight: 500; }
-.project-links { display: flex; gap: 1rem; }
-.project-link { display: inline-flex; align-items: center; gap: 0.3rem; color: var(--primary); font-weight: 500; transition: var(--transition); }
-.project-link:hover { transform: translateX(5px); }
-
-/* About */
-#about { padding: 5rem 2rem; background-color: var(--dark); color: var(--light); }
-.about-content { display: flex; flex-wrap: wrap; gap: 3rem; max-width: 1200px; margin: 0 auto; align-items: center; }
-.about-img { flex: 1; min-width: 300px; position: relative; }
-.about-img img { width: 100%; border-radius: 10px; position: relative; z-index: 2; }
-.about-img::before { content: ''; position: absolute; width: 100%; height: 100%; background-color: var(--primary); top: 20px; left: 20px; border-radius: 10px; z-index: 1; }
-.about-text { flex: 2; min-width: 300px; }
-.about-heading { font-size: 2rem; margin-bottom: 1rem; }
-.about-subheading { color: var(--primary); font-size: 1.2rem; margin-bottom: 1.5rem; }
-.about-bio { margin-bottom: 2rem; }
-.skills { display: flex; flex-wrap: wrap; gap: 1rem; }
-.skill { padding: 0.5rem 1rem; background-color: rgba(255,255,255,0.1); border-radius: 50px; font-size: 0.9rem; }
-
-/* Contact */
-#contact { padding: 5rem 2rem; }
-.contact-content { max-width: 800px; margin: 0 auto; text-align: center; }
-.contact-heading { font-size: 2rem; margin-bottom: 1rem; }
-.contact-subheading { color: #555; margin-bottom: 2rem; }
-.contact-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 3rem; }
-.contact-link { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
-.contact-icon { width: 60px; height: 60px; border-radius: 50%; background-color: var(--primary); color: white; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; transition: var(--transition); }
-.contact-link:hover .contact-icon { transform: translateY(-5px); }
-.contact-label { font-weight: 500; }
-.contact-form { background-color: var(--light); padding: 2rem; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-.form-group { margin-bottom: 1.5rem; text-align: left; }
-.form-control { width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem; transition: var(--transition); }
-.form-control:focus { outline: none; border-color: var(--primary); }
-textarea.form-control { min-height: 150px; resize: vertical; }
-.submit-btn { padding: 0.8rem 2rem; background-color: var(--primary); color: white; border: none; border-radius: 50px; font-weight: 600; cursor: pointer; transition: var(--transition); }
-.submit-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(58,134,255,0.3); }
-
-/* Mobile */
-@media (max-width: 768px) {
-  .menu-btn { display: block; }
-  .nav-links { position: fixed; top: 0; right: -100%; height: 100vh; width: 70%; background-color: var(--light); flex-direction: column; padding: 5rem 2rem; transition: var(--transition); box-shadow: -10px 0 30px rgba(0,0,0,0.1); }
-  .nav-links.active { right: 0; }
-  .nav-links a { color: var(--dark); }
-  .about-content { flex-direction: column; }
-  .about-img { order: -1; }
-  .contact-links { flex-direction: column; gap: 1.5rem; }
+/* Navbar - Cyberpunk Design */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem clamp(1rem, 5vw, 3rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  transition: var(--transition);
+  background: transparent;
 }
+
+nav.scrolled {
+  background: rgba(10, 14, 39, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--neon-cyan);
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+}
+
+.logo {
+  font-size: clamp(1.3rem, 3vw, 1.75rem);
+  font-weight: 900;
+  color: var(--neon-cyan);
+  text-shadow: var(--glow-cyan);
+  transition: var(--transition);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: 'Orbitron', monospace;
+}
+
+.nav-links {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  position: relative;
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
+}
+
+.nav-links a::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-neon);
+  opacity: 0;
+  transition: var(--transition);
+  clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
+  z-index: -1;
+}
+
+.nav-links a:hover {
+  color: var(--bg-primary);
+  text-shadow: none;
+}
+
+.nav-links a:hover::before {
+  opacity: 1;
+}
+
+.menu-btn {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1001;
+  background: none;
+  border: 2px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+  padding: 0.5rem;
+  transition: var(--transition);
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+}
+
+.menu-btn:hover {
+  box-shadow: var(--glow-cyan);
+  transform: rotate(45deg);
+}
+
+/* Project Cards - Cyberpunk Card Design */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.project-card {
+  background: var(--bg-card);
+  border: 2px solid transparent;
+  overflow: hidden;
+  transition: var(--transition-slow);
+  opacity: 0;
+  transform: translateY(30px) rotateX(10deg);
+  position: relative;
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: var(--gradient-neon);
+  opacity: 0;
+  transition: var(--transition);
+  z-index: -1;
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+}
+
+.project-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  background: var(--neon-cyan);
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  opacity: 0.3;
+}
+
+.project-card.visible {
+  opacity: 1;
+  transform: translateY(0) rotateX(0);
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: var(--transition-slow);
+  filter: grayscale(0.3);
+}
+
+.project-card:hover .project-img {
+  transform: scale(1.1);
+  filter: grayscale(0);
+}
+
+.project-content {
+  padding: 1.5rem;
+  position: relative;
+  z-index: 1;
+  background: var(--bg-card);
+}
+
+.project-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--neon-cyan);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-family: 'Orbitron', monospace;
+}
+
+.project-desc {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.project-tag {
+  padding: 0.3rem 0.8rem;
+  background: transparent;
+  border: 1px solid var(--neon-purple);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--neon-purple);
+  transition: var(--transition-fast);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  clip-path: polygon(3px 0, 100% 0, calc(100% - 3px) 100%, 0 100%);
+}
+
+.project-tag:hover {
+  background: var(--neon-purple);
+  color: var(--bg-primary);
+  box-shadow: 0 0 15px rgba(179, 0, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--neon-cyan);
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--neon-cyan);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--neon-cyan);
+  clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-neon);
+  transform: translateX(-100%);
+  transition: var(--transition);
+  z-index: -1;
+}
+
+.project-link:hover {
+  color: var(--bg-primary);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+  transform: translateX(3px);
+}
+
+.project-link:hover::before {
+  transform: translateX(0);
+}
+
+.project-link i {
+  font-size: 1rem;
+}
+
+/* About Section - Cyberpunk Layout */
+#about {
+  padding: 6rem 5%;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+#about::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.1) 0%, transparent 70%);
+  animation: float 6s ease-in-out infinite;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.about-img {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.about-img img {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  border: 3px solid var(--neon-cyan);
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+  clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px));
+  filter: grayscale(0.2);
+  transition: var(--transition);
+}
+
+.about-img img:hover {
+  filter: grayscale(0);
+  box-shadow: 0 0 50px rgba(0, 240, 255, 0.5);
+}
+
+.about-img::before {
+  content: '';
+  position: absolute;
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  background: transparent;
+  border: 2px solid var(--neon-purple);
+  top: 20px;
+  left: 20px;
+  z-index: 1;
+  clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px));
+  opacity: 0.5;
+}
+
+.about-text {
+  position: relative;
+  z-index: 2;
+}
+
+.about-heading {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--neon-cyan);
+  text-shadow: var(--glow-cyan);
+}
+
+.about-subheading {
+  color: var(--neon-purple);
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.about-bio {
+  margin-bottom: 2rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: 1.05rem;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.skill {
+  padding: 0.6rem 1.2rem;
+  background: transparent;
+  border: 2px solid var(--neon-cyan);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--neon-cyan);
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  clip-path: polygon(5px 0, 100% 0, calc(100% - 5px) 100%, 0 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.skill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-neon);
+  transform: translateX(-100%);
+  transition: var(--transition);
+  z-index: -1;
+  clip-path: polygon(5px 0, 100% 0, calc(100% - 5px) 100%, 0 100%);
+}
+
+.skill:hover {
+  color: var(--bg-primary);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+  transform: translateY(-3px);
+}
+
+.skill:hover::before {
+  transform: translateX(0);
+}
+
+/* Contact Section - Cyberpunk Form Design */
+#contact {
+  padding: 6rem 5%;
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+#contact::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 0, 110, 0.1) 0%, transparent 70%);
+  animation: float 8s ease-in-out infinite;
+}
+
+.contact-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.contact-heading {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  color: var(--neon-pink);
+  text-shadow: var(--glow-pink);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.contact-subheading {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.contact-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--bg-card);
+  transition: var(--transition);
+  border: 2px solid transparent;
+  clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+  position: relative;
+}
+
+.contact-link::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: var(--gradient-pink);
+  opacity: 0;
+  transition: var(--transition);
+  z-index: -1;
+  clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+}
+
+.contact-link:hover {
+  transform: translateY(-5px);
+}
+
+.contact-link:hover::before {
+  opacity: 1;
+}
+
+.contact-icon {
+  width: 70px;
+  height: 70px;
+  background: transparent;
+  color: var(--neon-pink);
+  border: 2px solid var(--neon-pink);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.75rem;
+  transition: var(--transition);
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+}
+
+.contact-link:hover .contact-icon {
+  transform: scale(1.1) rotate(45deg);
+  box-shadow: var(--glow-pink);
+  background: var(--gradient-pink);
+  color: var(--bg-primary);
+}
+
+.contact-label {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.contact-link span:last-child {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.contact-form {
+  background: var(--bg-card);
+  padding: 3rem;
+  border: 2px solid var(--neon-cyan);
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
+  clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px));
+  position: relative;
+}
+
+.contact-form::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background: var(--neon-cyan);
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  opacity: 0.3;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.form-control {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 2px solid var(--neon-purple);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: var(--transition);
+  font-family: 'Roboto Mono', monospace;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+}
+
+.form-control::placeholder {
+  color: var(--text-muted);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+}
+
+textarea.form-control {
+  min-height: 160px;
+  resize: vertical;
+}
+
+.submit-btn {
+  padding: 1rem 2.5rem;
+  background: transparent;
+  color: var(--neon-cyan);
+  border: 2px solid var(--neon-cyan);
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: var(--transition);
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-neon);
+  transform: translateY(-100%);
+  transition: var(--transition);
+  z-index: -1;
+}
+
+.submit-btn:hover {
+  color: var(--bg-primary);
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
+  transform: translateY(-3px);
+}
+
+.submit-btn:hover::before {
+  transform: translateY(0);
+}
+
+.submit-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .menu-btn {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 75%;
+    max-width: 350px;
+    background: rgba(10, 14, 39, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: 5rem 2rem;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 30px rgba(0, 240, 255, 0.3);
+    justify-content: flex-start;
+    gap: 2rem;
+    border-left: 2px solid var(--neon-cyan);
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-links a {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    padding: 0.75rem 0;
+    width: 100%;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .about-img {
+    order: -1;
+  }
+
+  .about-img::before {
+    top: 15px;
+    left: 15px;
+  }
+
+  .contact-links {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .contact-form {
+    padding: 2rem;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-content {
+    padding: 1rem;
+  }
+
+  .contact-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .contact-form {
+    padding: 1.5rem;
+  }
+}
+
