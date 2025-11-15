@@ -111,7 +111,8 @@ export const projects = [
     image: "./rental-aws.png",
     tags: [
       "Next.js",
-      "Node.js",
+      "NodeJS",
+      "Express.js",
       "TypeScript",
       "AWS S3",
       "AWS Amplify",
