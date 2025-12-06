@@ -207,6 +207,27 @@ export const projects = [
       code: "https://github.com/vvduth/rampyg",
     },
   },
+  {
+    id: 13,
+    title: "Dukem Learning",
+    description:
+      "An AI-powered learning platform that helps students study more effectively through intelligent document processing, flashcard generation, quizzes, and interactive AI chat.",
+    image: "./dukem-learning.png",
+    tags: [
+      "React",
+      "Node.js",
+      "TypeScript",
+      "GeminiAI",
+      "MongoDB",
+      "Docker",
+      "EC2",
+      "AWS S3",
+    ],
+    links: {
+      demo: "https://dukem-learning.xyz",
+      code: "https://github.com/vvduth/dukem-learning",
+    },
+  },
 ];
 
 // Extract unique tags for filtering
