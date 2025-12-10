@@ -4,7 +4,7 @@ import { projects, getAllTags } from '../data/projects.js';
 const PROJECTS_PER_PAGE = 6;
 let currentPage = 1;
 let currentFilter = 'all';
-let filteredProjects = [...projects];
+let filteredProjects = [...projects.reverse()]; // Show latest projects first
 
 // Render a single project card
 function renderProjectCard(project) {

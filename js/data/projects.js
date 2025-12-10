@@ -220,7 +220,7 @@ export const projects = [
       "GeminiAI",
       "MongoDB",
       "Docker",
-      "EC2",
+      "AWS EC2",
       "AWS S3",
     ],
     links: {
