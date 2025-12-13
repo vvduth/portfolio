@@ -228,6 +228,27 @@ export const projects = [
       code: "https://github.com/vvduth/dukem-learning",
     },
   },
+  {
+    id: 14,
+    title: "Dukem shorts",
+    description: "An app helps Transform long-form podcast videos into engaging vertical short-form clips optimized for TikTok and Instagram with subs.",
+    image: "./dukem-shorts.png",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Python", 
+      "FastAPI",
+      "AWS S3",
+      "PostgreSQL",
+      "GeminiAI",
+      "Inngest"
+    ],
+    links: {
+      demo: "https://ai-podcast-clipper-iota.vercel.app/dashboard",
+      code: "https://github.com/vvduth/ai-podcast-clipper"
+    },
+  }
 ];
 
 // Extract unique tags for filtering
