@@ -248,6 +248,26 @@ export const projects = [
       demo: "https://ai-podcast-clipper-iota.vercel.app/dashboard",
       code: "https://github.com/vvduth/ai-podcast-clipper"
     },
+  }, 
+  {
+    id: 15,
+    title: "Dukem musics",
+    description: "Dukem Music is an AI-powered music generation platform. It allows users to generate songs using advanced AI models, managed through a modern web interface.",
+    image: "./dukem-musics.png",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Python",
+      "FastAPI",
+      "AWS S3",
+      "Polar.sh",
+      "Modal",
+      "Inngest",
+      "GeminiAI"
+    ],
+    links: {
+      demo: "https://dukem-music.vercel.app/",
+      code: "https://github.com/vvduth/dukem-music"}
   }
 ];
 
